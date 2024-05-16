@@ -12,6 +12,10 @@ var create = require('./routes/create');
 var payment = require('./routes/payments');
 var notifyadminarrival = require('./routes/notifyadminarrival');
 var notifyadmindeparture = require('./routes/notifyadmindeparture');
+// var notifications = require('./routes/notifications'); // Remove this line
+// var chat = require('./routes/chat'); // Remove this line
+
+var chatRoutes = require('./routes/chat'); // Add this line to import the combined routes
 
 var app = express();
 
@@ -33,10 +37,7 @@ app.use('/create', create);
 app.use('/payments', payment);
 app.use('/notifyadminarrival', notifyadminarrival);
 app.use('/notifyadmindeparture', notifyadmindeparture);
-
-
-
-
+app.use('/', chatRoutes); // Use the combined routes
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,3 +56,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
